@@ -20,7 +20,8 @@ PSWD_FOUND=$(echo $PWND_PSWDS | grep ${PSWD_SHA1:5} | wc -l | tr -d '[:space:]')
 if [[ $PSWD_FOUND == "1" ]]; then
     PSWD_COUNT=$(echo $PWND_PSWDS | sed -e 's/.*://')
     echo "Your Password was found this many times: ${PSWD_COUNT}"
-    exit
+    exit ${PSWD_COUNT}
 fi
 
 echo "Your Password has not been found"
+exit 0
